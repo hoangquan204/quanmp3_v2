@@ -10,4 +10,5 @@ export const getCommentSelector = state => state.comment
 export const getClassRoomSelector = state => state.classRoom
 export const getNoteSelector = state => state.note
 export const getExerciseSelector = state => state.exercise
+export const getMusicSelector = state => state.music
 

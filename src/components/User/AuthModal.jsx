@@ -11,7 +11,7 @@ import { getAuthSelector, getThemeSelector } from '../../redux/selector';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import notificationSlice from '../Notification/notificationSlice';
-import { provinces } from '../../others/Provinces';
+import { provinces } from '../others/Provinces';
 import { getListMessage } from '../Message/messageSlice';
 
 const style = {
@@ -122,10 +122,7 @@ export default function LoginModal() {
                         <Stack row spacing={2}>
                             {/* {isLoading && <LinearProgress sx={{ mb: 5 }} />} */}
                             <Box className='flex items-center justify-center'>
-                                <img className='w-10 h-10' src={require('../../images/logoMyClass.png')}></img>
-                                <Typography sx={{ color: `${theme.palette.textColor.main}` }} className='px-2' >
-                                    Sign in
-                                </Typography>
+                                <img className='w-30 h-10' src={require('../../images/logo_no_bg_quanmp3.png')}></img>
                             </Box>
                             <TextField id="username" label="Username" variant="outlined"
                                 onChange={(e) => {
@@ -175,8 +172,7 @@ export default function LoginModal() {
                     </Box>
                     <Box sx={{ display: openFormRegister }} key="formRegister" >
                         <Box className='flex items-center justify-center pb-5'>
-                            <img className='w-10 h-10' src={require('../../images/logoMyClass.png')}></img>
-                            <Typography variant='subtitle1' sx={{ color: `${theme.palette.textColor.main}` }} className='px-2'>Sign up</Typography>
+                            <img className='w-30 h-10' src={require('../../images/logo_no_bg_quanmp3.png')}></img>
                         </Box>
                         <Grid container spacing={4} className='py-2'>
                             <Grid item xs={6}>

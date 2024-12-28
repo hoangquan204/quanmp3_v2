@@ -11,30 +11,18 @@ import { useState } from 'react';
 import MenuLeft, { DrawerList } from '../MenuLeft';
 import themeSlice from '../../theme/themeSlice';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import { getMusicSelector } from "../../redux/selector";
+import SearchModal from '../SearchModal';
+import SongList from '../SongList';
+import LoginModal from '../User/AuthModal';
 function HomePage() {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const [isExpanded, setIsExpanded] = useState(false);
-
-    const handleFocus = () => {
-        setIsExpanded(true); // Mở rộng thanh tìm kiếm khi click vào
-    };
-
-    const handleBlur = () => {
-        if (!inputValue) setIsExpanded(false); // Đóng lại nếu không có nội dung nhập vào
-    };
-
-    const [inputValue, setInputValue] = useState('');
-
-    const handleChange = (event) => {
-        setInputValue(event.target.value);
-    };
-
     const theme = useSelector(getThemeSelector)
+    const music = useSelector(getMusicSelector)
     const dispatch = useDispatch()
     const handleChangeMode = () => {
         dispatch(themeSlice.actions.changeMode(theme.palette.mode === 'light' ? 'dark' : 'light'))
     }
+
     return <>
         <div className="flex">
             <nav className="hidden md:flex flex-col bg-[#242222] w-[400px] h-screen text-white">
@@ -97,35 +85,19 @@ function HomePage() {
                         </div>
                     </div>
                     <div className='flex items-end gap-x-1'>
-                        <div className="search-container h-[50px]">
-                            <TextField
-                                id="filled-basic"
-                                label={
-                                    <>
-                                        <SearchIcon style={{ marginRight: '5px' }} />
-                                        {isExpanded || inputValue ? 'Tìm kiếm' : ''}
-                                    </>
-                                }
-                                variant="standard"
-                                value={inputValue}
-                                onChange={handleChange}
-                                onFocus={handleFocus}
-                                onBlur={handleBlur}
-                                fullWidth
-                                style={{
-                                    height: '40px',
-                                    width: isExpanded || inputValue ? '120px' : '40px', // Chiều rộng của input khi mở rộng
-                                    transition: 'width 0.3s ease', // Hiệu ứng chuyển đổi mượt mà
-                                }}
-                            />
-                        </div>
+                        <SearchModal></SearchModal>
                         <IconButton onClick={handleChangeMode}>
                             {theme.palette.mode === 'light' ? <DarkModeIcon></DarkModeIcon> : <WbSunnyIcon></WbSunnyIcon>}
                         </IconButton>
-                        <Button variant='contained'>Log in</Button>
+                        <LoginModal></LoginModal>
                     </div>
                 </div>
-                <MusicPlayer></MusicPlayer>
+                <div className='flex flex-col gap-y-10'>
+                    <MusicPlayer></MusicPlayer>
+                    <div className='w-full'>
+                        <SongList tracks={music.list} />
+                    </div>
+                </div>
             </div>
         </div>
     </>

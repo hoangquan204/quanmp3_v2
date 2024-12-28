@@ -5,6 +5,7 @@ import themeSlice from "../theme/themeSlice";
 import adminSlice from "../components/admin/adminSlice";
 import messageSlice from "../components/Message/messageSlice";
 import commentSlice from "../components/Comment/commentSlice";
+import musicSlice from "../components/music/musicSlice";
 
 
 export default configureStore({
@@ -15,5 +16,6 @@ export default configureStore({
         admin: adminSlice.reducer,
         message: messageSlice.reducer,
         comment: commentSlice.reducer,
+        music: musicSlice.reducer
     }
 })

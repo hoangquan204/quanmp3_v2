@@ -1,12 +1,16 @@
 import React from "react";
 import { IconButton, Typography } from "@mui/material";
 import { PlayArrow } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getThemeSelector } from "../../redux/selector";
+import musicSlice from "../music/musicSlice";
 
-const SongList = ({ tracks, onPlay, currentTrack }) => {
+const SongList = ({ tracks, currentTrack }) => {
     const theme = useSelector(getThemeSelector)
-
+    const dispatch = useDispatch()
+    const onPlay = (index) => {
+        dispatch(musicSlice.actions.changeCurrentTrack(index))
+    }
     return (
         <div className="flex flex-wrap py-4 gap-y-2">
             {tracks.map((track, index) => (
