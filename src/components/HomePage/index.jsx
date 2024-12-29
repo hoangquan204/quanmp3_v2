@@ -13,8 +13,8 @@ import themeSlice from '../../theme/themeSlice';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import { getMusicSelector } from "../../redux/selector";
 import SearchModal from '../SearchModal';
-import SongList from '../SongList';
 import LoginModal from '../User/AuthModal';
+import TabsHomePage from '../TabsHomePage';
 function HomePage() {
     const theme = useSelector(getThemeSelector)
     const music = useSelector(getMusicSelector)
@@ -76,7 +76,7 @@ function HomePage() {
                     </li>
                 </ul>
             </nav>
-            <div className="flex flex-col gap-y-10 p-1 ">
+            <div className="w-full md:w-[80%] flex flex-col gap-y-10 p-1 ">
                 <div className='flex items-center justify-between w-full'>
                     <div>
                         <div className='flex md:hidden items-center gap-x-1'>
@@ -94,9 +94,7 @@ function HomePage() {
                 </div>
                 <div className='flex flex-col gap-y-10'>
                     <MusicPlayer></MusicPlayer>
-                    <div className='w-full'>
-                        <SongList tracks={music.list} />
-                    </div>
+                    <TabsHomePage></TabsHomePage>
                 </div>
             </div>
         </div>

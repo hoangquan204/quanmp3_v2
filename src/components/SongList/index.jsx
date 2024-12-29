@@ -16,7 +16,7 @@ const SongList = ({ tracks, currentTrack }) => {
             {tracks.map((track, index) => (
                 <div
                     key={index}
-                    className={`min-w-[200px] hover:animate-bounce flex flex-col items-center cursor-pointer ${currentTrack === index ? "border-2 border-blue-500" : ""}`}
+                    className={`min-w-[150px] hover:animate-bounce flex flex-col items-center cursor-pointer ${currentTrack === index ? "border-2 border-blue-500" : ""}`}
                     onClick={() => onPlay(index)}
                 >
                     {/* Album Cover */}

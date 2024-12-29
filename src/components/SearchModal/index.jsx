@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMusicSelector } from '../../redux/selector';
+import { getMusicSelector, getThemeSelector } from '../../redux/selector';
 import musicSlice from '../music/musicSlice';
 
 const style = {
@@ -25,6 +25,7 @@ export default function SearchModal() {
     const [open, setOpen] = React.useState(false);
     const [resultSearch, setResultSearch] = React.useState([])
     const music = useSelector(getMusicSelector)
+    const theme = useSelector(getThemeSelector)
 
     const dispatch = useDispatch()
 
@@ -83,7 +84,7 @@ export default function SearchModal() {
                                 <ListItemIcon>
                                     <img className='w-[60px] h-[50px] object-cover rounded-md' src={item.cover}></img>
                                 </ListItemIcon>
-                                <ListItemText sx={{ color: 'white', px: '4px' }} primary={item.title} />
+                                <ListItemText sx={{ color: `${theme.palette.textColor.main}`, px: '4px' }} primary={item.title} />
                             </ListItemButton>
                         })}
                     </List>
